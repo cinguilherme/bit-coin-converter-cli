@@ -1,0 +1,11 @@
+{
+  "name": "bit-coin-converter-cli",
+  "version": "1.0.0",
+  "description": "cli for converting bitcoin value to desired currency",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Guilherme Cintra <cinguilherme@gmail.com>",
+  "license": "MIT"
+}
