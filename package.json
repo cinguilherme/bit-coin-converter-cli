@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clear": "rimraf bin",
-    "build": "npm run clear && ./node_modules/.bin/babel --out-dir bin src",
+    "build": "npm run clear \" ./node_modules/.bin/babel --out-dir bin src \"",
     "build:watch": "npm run build -- --watch",
     "lint": "./node_modules/.bin/eslint src/*.js",
     "prepush": "npm run lint",
@@ -15,7 +15,7 @@
   },
   "preferGlobal": true,
   "bin": {
-    "bitcoin-converter":"bin/main.js"
+    "bitcoin-converter": "bin/main.js"
   },
   "nyc": {
     "reporter": [
@@ -53,5 +53,8 @@
     "mocha": "^3.2.0",
     "nyc": "^10.2.0",
     "rimraf": "^2.6.1"
+  },
+  "dependencies": {
+    "commander": "^2.19.0"
   }
 }
