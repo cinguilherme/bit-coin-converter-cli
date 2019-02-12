@@ -15,7 +15,7 @@
   },
   "preferGlobal": true,
   "bin": {
-    "bitcoin-converter": "bin/main.js"
+    "bitcoin-converter-cli": "src/main.js"
   },
   "nyc": {
     "reporter": [
