@@ -1,23 +1,39 @@
 /* eslint-disable no-console */
-const request = require('request');
+const request = require('request-promise-native');
 const chalk = require('chalk');
+const ora = require('ora');
 
 function convertBTC(currency = 'USD', amount = 1) {
   const url =
     `https://apiv2.bitcoinaverage.com/convert/global?from=BTC&to=${currency}&amount=${amount}`;
 
-  request(url, (error, response, body) => {
-    let apiResponse;
-    try {
-      apiResponse = JSON.parse(body);
-
-      const output = `${chalk.red(amount)} BTC to ${chalk.cyan(currency)} = ${chalk.yellow(apiResponse.price)}`;
-
-      console.log(output);
-    } catch (parseError) {
-      console.log(chalk.red('Error'));
-    }
+  const spinner = ora({
+    text: 'Loading bitcoin data..',
+    color: 'green',
   });
+
+  spinner.start();
+  return request(url)
+    .then((body) => {
+      spinner.stop();
+      return body;
+    // eslint-disable-next-line consistent-return
+    }).then((body) => {
+      let apiResponse;
+      try {
+        apiResponse = JSON.parse(body);
+        spinner.stop();
+        const output = `${chalk.red(amount)} BTC to ${chalk.cyan(currency)} = ${chalk.yellow(apiResponse.price)}`;
+
+        console.info(output);
+      } catch (parseError) {
+        console.info(chalk.red('Error'));
+        return parseError;
+      }
+    }).catch((err) => {
+      console.info(chalk.red('Error'));
+      return err;
+    });
 }
 
 module.exports = convertBTC;
