@@ -1,6 +1,6 @@
 {
-  "name": "bitcoin-converter-cli",
-  "version": "1.0.0",
+  "name": "bitcoin-converter-cli-cingg",
+  "version": "1.0.1",
   "description": "CLI for converting bitcoin value into currency provided.",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "preferGlobal": true,
   "bin": {
-    "bitcoin-converter-cli": "src/main.js"
+    "bitcoin-converter-cli-cingg": "src/main.js"
   },
   "nyc": {
     "reporter": [
