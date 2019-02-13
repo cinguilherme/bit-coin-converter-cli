@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const request = require('request');
 const chalk = require('chalk');
 
@@ -16,7 +17,6 @@ function convertBTC(currency = 'USD', amount = 1) {
     } catch (parseError) {
       console.log(chalk.red('Error'));
     }
-
   });
 }
 

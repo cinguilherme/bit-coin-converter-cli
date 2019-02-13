@@ -33,13 +33,13 @@ describe('ConvertBTC', () => {
   });
 
   afterEach(() => {
+    // eslint-disable-next-line no-console
     console.log.restore();
   });
 
   context('bitcoin avarage api NOCK', () => {
     it(`should perform the request to bitcoin avarage with
      default data and receive default infos`, (done) => {
-
         nock('https://apiv2.bitcoinaverage.com')
           .get('/convert/global')
           .query({ from: 'BTC', to: 'USD', amount: 1 })
@@ -85,7 +85,6 @@ describe('ConvertBTC', () => {
     });
 
     context('error with api call', () => {
-
       it('should report to user if api replies with error', (done) => {
         nock('https://apiv2.bitcoinaverage.com')
           .get('/convert/global')
