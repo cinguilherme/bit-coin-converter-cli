@@ -28,6 +28,10 @@ describe('ConvertBTC', () => {
     price: 1000.93,
   };
 
+  const badJson = `{
+    error: error,
+  }`;
+
   beforeEach(() => {
     consoleStub = sinon.stub(console, 'info');
   });

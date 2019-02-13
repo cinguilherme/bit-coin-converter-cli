@@ -13,27 +13,20 @@ function convertBTC(currency = 'USD', amount = 1) {
   });
 
   spinner.start();
+
   return request(url)
     .then((body) => {
       spinner.stop();
       return body;
-    // eslint-disable-next-line consistent-return
+      // eslint-disable-next-line consistent-return
     }).then((body) => {
-      let apiResponse;
-      try {
-        apiResponse = JSON.parse(body);
-        spinner.stop();
-        const output = `${chalk.red(amount)} BTC to ${chalk.cyan(currency)} = ${chalk.yellow(apiResponse.price)}`;
-
-        console.info(output);
-      } catch (parseError) {
-        console.info(chalk.red('Error'));
-        return parseError;
-      }
+      const apiResponse = JSON.parse(body);
+      spinner.stop();
+      const output = `${chalk.red(amount)} BTC to ${chalk.cyan(currency)} = ${chalk.yellow(apiResponse.price)}`;
+      console.info(output);
     }).catch((err) => {
       console.info(chalk.red('Error'));
       return err;
     });
 }
-
 module.exports = convertBTC;
